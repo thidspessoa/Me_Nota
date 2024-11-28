@@ -9,8 +9,10 @@ def preprocess_image(image_path):
     # Converter para escala de cinza
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    # Aplicar binarização
-    _, binary_image = cv2.threshold(gray_image, 150, 255, cv2.THRESH_BINARY)
+    # Aplicar binarização adaptativa
+    binary_image = cv2.adaptiveThreshold(gray_image, 255, 
+                                         cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
+                                         cv2.THRESH_BINARY, 11, 2)
 
     # Remover ruído
     denoised_image = cv2.medianBlur(binary_image, 3)
@@ -31,12 +33,17 @@ def extract_fields(image):
             text = data['text'][i]
             x, y, w, h = data['left'][i], data['top'][i], data['width'][i], data['height'][i]
 
-            # Aqui você pode adicionar lógica para identificar campos específicos
-            # Por exemplo, se o texto contiver "Nome", você pode armazená-lo
+            # Adicione lógica para identificar campos específicos
             if "Nome" in text:
                 fields['Nome'] = text
             elif "Data de Nascimento" in text:
                 fields['Data de Nascimento'] = text
+            elif "Nome da Mãe" in text:
+                fields['Nome da Mãe'] = text
+            elif "Nome do Pai" in text:
+                fields['Nome do Pai'] = text
+            elif "Naturalidade" in text:
+                fields['Naturalidade'] = text
             # Adicione mais condições conforme necessário
 
     return fields
