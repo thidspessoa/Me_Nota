@@ -1,5 +1,17 @@
 import cv2
 import pytesseract
+import os
+from pymongo import MongoClient
+from dotenv import load_dotenv
+
+load_dotenv()
+MONGO_URL = os.getenv("MONGO_URL")
+MONGO_DB_NAME = os.getenv("MONGO_DB_NAME")
+
+# Conectar ao MongoDB
+client = MongoClient(MONGO_URL)
+db = client[MONGO_DB_NAME]
+collection = db['identidade']  # Nome da coleção onde os dados serão armazenados
 
 # Função para pré-processar a imagem
 def preprocess_image(image_path):
@@ -61,3 +73,10 @@ extracted_fields = extract_fields(processed_image)
 print("Campos extraídos:")
 for key, value in extracted_fields.items():
     print(f"{key}: {value}")
+
+# Inserir os dados extraídos no MongoDB
+if extracted_fields:
+    collection.insert_one(extracted_fields)
+    print("Dados inseridos no MongoDB com sucesso.")
+else:
+    print("Nenhum dado extraído para inserir no MongoDB.")
