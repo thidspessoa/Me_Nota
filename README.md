@@ -18,7 +18,7 @@ Para rodar o aplicativo, você precisará das seguintes bibliotecas e tecnologia
 - **Flask**: Para o servidor web.
 - **pymongo**: Para interação com o MongoDB.
 - **python-dotenv**: Para gerenciar variáveis de ambiente.
-- **opencv-python**: Para processamento de imagens (se necessário).
+- **opencv-python**: Para processamento de imagens.
 - **pytesseract**: Para reconhecimento óptico de caracteres (OCR).
 
 ### Frontend
