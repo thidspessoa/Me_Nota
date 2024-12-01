@@ -162,3 +162,5 @@ cython_debug/
 #.idea/
 
 imagem_identidade.jpeg
+processed_image_for_ocr.jpg
+
