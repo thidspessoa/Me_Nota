@@ -6,7 +6,10 @@ import subprocess
 
 load_dotenv()
 
-app = Flask(__name__, template_folder='template/Telas')  # Definindo a pasta de templates
+template_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)), '../front/templates')
+static_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)), '../front/static')
+
+app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 
 # Definindo a pasta para salvar os arquivos enviados
 UPLOAD_FOLDER = 'uploads'
@@ -15,18 +18,70 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # Conexão com o MongoDB
 client = MongoClient(os.getenv("MONGO_URL"))
 db = client[os.getenv("MONGO_DB_NAME")]  
-collection = db[os.getenv("MONGO_DB_CLUSTER")] 
+collection = db[os.getenv("MONGO_DB_COLLECTION2")] 
 
 @app.route('/')
 def home():
-    return render_template('login.html')
+    return render_template('telaCarregamento.html')
+
+@app.route('/cadastro', methods=['GET', 'POST'])
+def cadastro():
+    if request.method == 'POST':
+        nome = request.form.get('nome')
+        cpf = request.form.get('cpf')
+        email = request.form.get('email')
+        senha = request.form.get('senha')
+        tipo = request.form.get('tipo')
+
+        if not nome or not cpf or not email or not senha or not tipo:
+            return render_template('cadastro.html', message='Todos os campos são obrigatórios.')
+
+        # Verifica se o CPF já está cadastrado
+        if collection.find_one({'cpf': cpf}):
+            return render_template('cadastro.html', message='Este CPF já está registrado.')
+
+        # Verifica se o e-mail já está cadastrado
+        if collection.find_one({'email': email}):
+            return render_template('cadastro.html', message='Este e-mail já está registrado.')
+
+        # Insere o novo usuário no banco de dados
+        user = {
+            "nome": nome,
+            "cpf": cpf,
+            "email": email,
+            "senha": senha,  # Não é recomendado armazenar senhas sem hash, considere usar hashing
+            "tipo": tipo
+        }
+        collection.insert_one(user)
+
+        # Redireciona para o login após o cadastro
+        return redirect(url_for('login'))
+
+    return render_template('cadastro.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # Aqui você pode implementar a lógica de autenticação
-        return redirect(url_for('menu'))  # Redireciona para o menu após login
-    return render_template('login.html')  # Renderiza a página de login
+        email = request.form.get('email')
+        senha = request.form.get('senha')
+
+        if not email or not senha:
+            return render_template('login.html', message='Por favor, preencha todos os campos.')
+
+        # Busca o usuário no MongoDB
+        user = collection.find_one({'email': email})
+
+        if not user:
+            return render_template('login.html', message='Usuário não encontrado.')
+
+        # Verifica se a senha está correta (comparação direta)
+        if user['senha'] != senha:
+            return render_template('login.html', message='Senha incorreta.')
+
+        # Redireciona para o menu após autenticação bem-sucedida
+        return redirect(url_for('telaPrincipal.html'))
+    
+    return render_template('login.html')
 
 @app.route('/menu')
 def menu():
@@ -81,7 +136,7 @@ def pontuacao():
 # Rota para servir arquivos estáticos
 @app.route('/static/<path:filename>')
 def serve_static(filename):
-    return send_from_directory('front/static', filename)
+    return send_from_directory(static_dir, filename)
 
 if __name__ == '__main__':
     app.run(debug=True)

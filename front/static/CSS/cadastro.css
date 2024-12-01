@@ -5,7 +5,15 @@ body, html {
     font-family: Arial, sans-serif;
     height: 100%;
   }
-  
+  /* Estilo para mensagens de erro */
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
   /* Fundo */
   body {
     background-color: #052C55;

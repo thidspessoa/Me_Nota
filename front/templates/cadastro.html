@@ -14,9 +14,14 @@
     <!-- Mensagem de boas-vindas -->
     <h2>Criar Conta</h2>
     <p class="welcome-message">Preencha os campos abaixo para se cadastrar.</p>
+    {% if message %}
+    <div class="error-message">
+      <p>{{ message }}</p>
+    </div>
+    {% endif %}
 
     <!-- Formulário de Cadastro -->
-    <form id="formCadastro">
+    <form method="POST" action="{{ url_for('cadastro') }}">
       <input type="text" id="nome" placeholder="Nome Completo">
       <input type="text" id="cpf" placeholder="CPF">
       <input type="email" id="email" placeholder="E-mail">

@@ -81,7 +81,7 @@ def insert_into_mongo(data):
         # Conectar ao MongoDB Atlas
         client = MongoClient(os.getenv("MONGO_URL"))
         db = client[os.getenv("MONGO_DB_NAME")]
-        collection = db[os.getenv("MONGO_DB_CLUSTER")]
+        collection = db[os.getenv("MONGO_DB_COLLECTION")]
 
         # Inserir os dados extraídos
         collection.insert_one(data)
