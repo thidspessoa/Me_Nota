@@ -20,6 +20,9 @@ function validateFile() {
     if (allowedTypes.includes(file.type)) {
         feedback.textContent = `Arquivo "${file.name}" carregado com sucesso!`;
         feedback.style.color = "green";
+        
+        // Envia o formulário após a validação bem-sucedida
+        document.getElementById("uploadForm").submit();
     } else {
         feedback.textContent = "Formato não suportado. Envie um arquivo PDF ou imagem.";
         feedback.style.color = "red";

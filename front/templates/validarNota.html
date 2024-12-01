@@ -20,11 +20,11 @@
       <div class="icon-section">
         <img src="{{ url_for('static', filename='icones/validar.png') }}" alt="Ícone de Validação de Nota Fiscal">
       </div>
-      <form id="uploadForm">
+      <form id="uploadForm" enctype="multipart/form-data" method="POST" action="{{ url_for('validar_nota') }}">       
         <p>Carregar Nota Fiscal</p>
-        <input type="file" id="uploadInput" accept=".pdf, .jpeg, .jpg, .png" required />
-        <p id="feedback"></p> <!-- Mensagem de feedback -->
+        <input type="file" name="file" id="uploadInput" accept=".pdf, .jpeg, .jpg, .png" required />
         <button type="button" class="action-button" onclick="validateFile()">Validar</button>
+        <div id="feedback"></div> <!-- Mensagem de feedback -->
       </form>
     </div>
   </div>

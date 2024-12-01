@@ -102,10 +102,12 @@ def validar_nota():
 
         # Salva o arquivo
         file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+        print(f"Salvando arquivo em: {file_path}")  # Adicione este print
         file.save(file_path)
 
         # Chama o extrai.py com o caminho do arquivo
         result = subprocess.run(['python', 'back/extrai.py', file_path], capture_output=True, text=True)
+        print(f"Resultado da execução do script: {result.returncode}, Saída: {result.stdout}, Erro: {result.stderr}")
 
         # Verifica se o processamento foi bem-sucedido
         if result.returncode == 0:
