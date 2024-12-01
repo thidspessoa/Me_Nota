@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Me Nota</title>
-  <link rel="stylesheet" href="../CSS/telaCarregamento.css">
-  <script src="../JS/telaCarregamento.js"></script> </head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/telaCarregamento.css') }}">
+  <script src="{{ url_for('static', filename='JS/telaCarregamento.js') }}" defer></script>
+  <script>
+    // Função para redirecionar para a página de login após 4 segundos
+    function redirectToLogin() {
+      setTimeout(function() {
+        window.location.href = "{{ url_for('login') }}"; // Redireciona para a rota de login
+      }, 4000); // Tempo em milissegundos
+    }
+    
+    // Chama a função ao carregar a página
+    window.onload = redirectToLogin;
+  </script>
 </head>
 <body>
   <div class="background">
     <div class="logo-container">
-      <img src="imagens/logo.jpeg" alt="Me Nota Logo" class="logo">
+      <img src="{{ url_for('static', filename='imagens/logo.jpeg') }}" alt="Logo do Me Nota" class="logo">
     </div>
   </div>
 </body>
 </html>
-

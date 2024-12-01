@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minha Pontuação</title>
-  <link rel="stylesheet" href="../CSS/pontuacao.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/pontuacao.css') }}">
 </head>
 <body>
   <div class="pontuacao-container">
@@ -33,15 +33,15 @@
         <h3>Recompensas Disponíveis</h3>
         <ul class="lista-recompensas">
           <li>
-            <img src="../icones/cupom.png" alt="Voucher">
+            <img src="{{ url_for('static', filename='icones/cupom.png') }}" alt="Voucher de Desconto no IPTU">
             <span>Desconto no IPTU - 1000 pontos</span>
           </li>
           <li class="indisponivel">
-            <img src="../icones/voucher.png" alt="Cupom">
+            <img src="{{ url_for('static', filename='icones/voucher.png') }}" alt="Voucher de Compras">
             <span>Voucher de Compras - 2000 pontos</span>
           </li>
           <li class="indisponivel">
-            <img src="../icones/premio.png" alt="Prêmio">
+            <img src="{{ url_for('static', filename='icones/premio.png') }}" alt="Prêmio Especial">
             <span>Prêmio Especial - 5000 pontos</span>
           </li>
         </ul>
@@ -49,6 +49,6 @@
     </div>
   </div>
 
-  <script src="../JS/pontuacao.js"></script>
+  <script src="{{ url_for('static', filename='JS/pontuacao.js') }}"></script>
 </body>
 </html>

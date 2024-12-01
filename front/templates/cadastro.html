@@ -4,16 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro - Me Nota</title>
-  <link rel="stylesheet" href="../CSS/cadastro.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/cadastro.css') }}">
 </head>
 <body>
   <div class="container">
     <!-- Logo -->
-    <img src="../Telas/imagens/logo.jpeg" alt="Logo Me Nota" class="logo">
+    <img src="{{ url_for('static', filename='Telas/imagens/logo.jpeg') }}" alt="Logo Me Nota" class="logo">
     
     <!-- Mensagem de boas-vindas -->
     <h2>Criar Conta</h2>
     <p class="welcome-message">Preencha os campos abaixo para se cadastrar.</p>
+    
     {% if message %}
     <div class="error-message">
       <p>{{ message }}</p>
@@ -22,22 +23,22 @@
 
     <!-- Formulário de Cadastro -->
     <form method="POST" action="{{ url_for('cadastro') }}">
-      <input type="text" id="nome" placeholder="Nome Completo">
-      <input type="text" id="cpf" placeholder="CPF">
-      <input type="email" id="email" placeholder="E-mail">
-      <input type="password" id="senha" placeholder="Senha">
-      <select id="tipo">
+      <input type="text" name="nome" placeholder="Nome Completo" required>
+      <input type="text" name="cpf" placeholder="CPF" required>
+      <input type="email" name="email" placeholder="E-mail" required>
+      <input type="password" name="senha" placeholder="Senha" required>
+      <select name="tipo" required>
         <option value="cidadao">Cidadão</option>
         <option value="admin">Administrador</option>
       </select>
       <button type="submit" class="btn-submit">Cadastrar</button>
     </form>
-
+  
     <!-- Link para Login -->
     <div class="register">
-      <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+      <p>Já tem uma conta? <a href="{{ url_for('login') }}">Faça login</a></p>
     </div>
   </div>
-  <script src="../JS/cadastro.js"></script>
+  <script src="{{ url_for('static', filename='JS/cadastro.js') }}"></script>
 </body>
 </html>

@@ -16,9 +16,13 @@ UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Conexão com o MongoDB
-client = MongoClient(os.getenv("MONGO_URL"))
-db = client[os.getenv("MONGO_DB_NAME")]  
-collection = db[os.getenv("MONGO_DB_COLLECTION2")] 
+try:
+    client = MongoClient(os.getenv("MONGO_URL"))
+    db = client[os.getenv("MONGO_DB_NAME")]
+    collection = db[os.getenv("MONGO_DB_COLLECTION2")]
+    print("Conexão com o MongoDB estabelecida com sucesso.")
+except Exception as e:
+    print(f"Erro ao conectar ao MongoDB: {e}")
 
 @app.route('/')
 def home():
@@ -79,13 +83,13 @@ def login():
             return render_template('login.html', message='Senha incorreta.')
 
         # Redireciona para o menu após autenticação bem-sucedida
-        return redirect(url_for('telaPrincipal.html'))
+        return redirect(url_for('menu'))
     
     return render_template('login.html')
 
 @app.route('/menu')
 def menu():
-    return render_template('menu.html')  # Renderiza o menu principal
+    return render_template('telaPrincipal.html')  # Renderiza o menu principal
 
 @app.route('/validarNota', methods=['GET', 'POST'])
 def validar_nota():
@@ -105,8 +109,10 @@ def validar_nota():
 
         # Verifica se o processamento foi bem-sucedido
         if result.returncode == 0:
+            # Aqui você pode adicionar lógica para atualizar a pontuação no banco de dados, se necessário
             return redirect(url_for('pontuacao'))  # Redireciona para pontuacao.html
         else:
+            print(f"Erro ao processar o arquivo: {result.stderr}")  # Log do erro
             return 'Erro ao processar o arquivo: ' + result.stderr, 500
 
     return render_template('validarNota.html')  # Renderiza a página de validação
@@ -124,9 +130,7 @@ def consultar():
 
 @app.route('/lerNota', methods=['GET', 'POST'])
 def ler_nota():
-    if request.method == 'POST':
-        # Aqui você pode implementar a lógica para ler uma nota
-        return redirect(url_for('menu'))  # Redireciona para o menu após ler
+    # Lógica para ler nota
     return render_template('lerNota.html')  # Renderiza a página para ler nota
 
 @app.route('/pontuacao')
