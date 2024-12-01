@@ -113,6 +113,7 @@ def main(image_path):
     )
 
     # Salvar e exibir a imagem processada
+    processed_image_path = "processed_image_for_ocr.jpg"
     cv2.imwrite("processed_image_for_ocr.jpg", binary_image)
 
     # Realizar OCR na imagem processada
@@ -139,11 +140,11 @@ def main(image_path):
         print("Nenhum dado relevante extraído para inserir no MongoDB.")
 
     # Excluir a imagem processada
-    # if os.path.exists(processed_image_path):
-    #     os.remove(processed_image_path)
-    #     print(f"A imagem processada '{processed_image_path}' foi excluída.")
-    # else:
-    #     print(f"A imagem processada '{processed_image_path}' não foi encontrada para exclusão.")
+    if os.path.exists(processed_image_path):
+         os.remove(processed_image_path)
+         print(f"A imagem processada '{processed_image_path}' foi excluída.")
+    else:
+         print(f"A imagem processada '{processed_image_path}' não foi encontrada para exclusão.")
 
 if __name__ == "__main__":
     image_path = "imagem_identidade.jpeg"

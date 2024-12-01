@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validar Nota Fiscal</title>
+  <link rel="stylesheet" href="../CSS/global.css">
+  <link rel="stylesheet" href="../CSS/validarNota.css">
+</head>
+<body>
+  <!-- Cabeçalho com botão de voltar -->
+  <div class="header">
+    <button class="logout-button" onclick="navigateBack()">Voltar</button>
+    <h2>Validar Nota Fiscal</h2>
+  </div>
+
+  <!-- Contêiner Principal -->
+  <div class="validar-container">
+    <div class="content">
+      <div class="icon-section">
+        <img src="../icones/validar.png" alt="Upload Nota Fiscal">
+      </div>
+      <form id="uploadForm">
+        <p>Carregar Nota Fiscal</p>
+        <input type="file" id="uploadInput" />
+        <p id="feedback"></p> <!-- Mensagem de feedback -->
+        <button type="button" class="action-button" onclick="validateFile()">Validar</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="../JS/validarNota.js"></script>
+</body>
+</html>

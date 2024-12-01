@@ -1,0 +1,116 @@
+.form-container {
+  width: 90%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+/* Cabeçalho */
+.header {
+  background-color: #6FCF97;
+  color: white;
+  padding: 12px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0 0 10px 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 20px;
+  text-align: center;
+  flex: 1; /* Centraliza o texto horizontalmente */
+}
+
+/* Botão de voltar*/
+
+.logout-button {
+  background-color: #10571c;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #0e4818;
+}
+
+
+/* Formulário */
+
+.form-container form {
+  margin-top: 120px; /* Espaço suficiente para o cabeçalho */
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px; /* Espaçamento interno para telas pequenas */
+  box-sizing: border-box;
+}
+
+.form-container p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  text-align: center;
+  color: #333;
+}
+
+.input-group {
+  margin: 15px 0;
+  width: 100%;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.action-button {
+  background-color: #27ae60;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #219653;
+}
+
+
+/* Div para exibição de resultados */
+.resultado-container {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #ddd;
+}

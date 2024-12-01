@@ -1,0 +1,114 @@
+  /* Estilo atualizado para a tela de emissão */
+  .form-container {
+    width: 90%;
+    max-width: 400px; /* Ajustando largura para consistência */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+  }
+  
+  /* Cabeçalho */
+  .header {
+      background-color: #6FCF97;
+      padding: 13px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 8px 8px 0 0;
+  }
+  
+  .header h2 {
+      color: white;
+      font-size: 20px;
+      margin: 0;
+      text-align: center;
+      flex-grow: 1;
+  }
+  
+  .back-button {
+      background-color: #006900;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+  }
+  
+  .back-button{
+      background-color: #10571c;
+  }
+
+  .back-button:hover{
+    background-color: #10571c;
+   }
+
+
+  /* Formulário */
+  .form-container form {
+    margin-top: 120px; /* Espaço suficiente para o cabeçalho */
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px; /* Espaçamento interno para telas pequenas */
+    box-sizing: border-box;
+  }
+  
+  .input-group {
+    margin: 15px 0;
+    width: 100%;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  
+  .action-button {
+    background-color: #27ae60;
+    color: #ffffff;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .action-button:hover {
+    background-color: #219653;
+  }
+  
+  /* Melhorias para telas menores */
+  @media screen and (max-width: 768px) {
+    .form-container .header {
+      padding: 8px 16px;
+      flex-direction: row;
+    }
+  
+    .form-container form {
+      margin-top: 100px;
+      padding: 0 10px;
+    }
+  
+    .input-group input {
+      font-size: 14px;
+    }
+  
+    .action-button {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }

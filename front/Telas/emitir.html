@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emitir Nota Fiscal</title>
+  <link rel="stylesheet" href="../CSS/global.css">
+  <link rel="stylesheet" href="../CSS/emitir.css">
+</head>
+<body>
+  <div class="form-container">
+    <!-- Cabeçalho com botão de voltar -->
+    <div class="header">
+      <button class="back-button" onclick="navigateBack()">Voltar</button>
+      <h2>Emitir Nota Fiscal</h2>
+    </div>
+    <!-- Formulário -->
+    <form id="notaFiscalForm">
+      <div class="input-group">
+        <input type="text" placeholder="CPF/CNPJ do Cliente" required />
+      </div>
+      <div class="input-group">
+        <input type="text" placeholder="Serviço Prestado" required />
+      </div>
+      <div class="input-group">
+        <input type="number" placeholder="Valor do Serviço" required />
+      </div>
+      <button type="submit" class="action-button">Emitir</button>
+    </form>
+  </div>
+  <script src="../JS/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ler Notas</title>
+  <link rel="stylesheet" href="../CSS/global.css">
+  <link rel="stylesheet" href="../CSS/lerNota.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Cabeçalho -->
+    <div class="header">
+      <button class="logout-button" onclick="voltar()">Voltar</button>
+      <h2>Ler Notas</h2>
+    </div>
+      
+
+    <!-- Formulário -->
+    <div class="form-container">
+      <p>Insira o código da nota fiscal para leitura:</p>
+      <div class="input-group">
+        <input type="text" id="codigoNota" placeholder="Código da Nota Fiscal" required>
+      </div>
+      <button id="lerNotaButton" class="action-button">Ler Nota</button>
+    </div>
+
+    <!-- Div para exibir o resultado -->
+    <div id="resultadoNota" class="resultado-container"></div>
+  </div>
+  <script src="../JS/lerNota.js"></script>
+</body>
+</html>

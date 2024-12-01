@@ -1,0 +1,122 @@
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    height: 100vh; /* Altura total da tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Contêiner geral */
+.container {
+    width: 90%; /* Proporção igual para todas as telas */
+    max-width: 400px; /* Largura máxima */
+    height: 100%; /* Preenchendo a tela */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho */
+.header {
+    background-color: #6FCF97;
+    color: white;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    max-width: 400px;
+}
+
+.header h2 {
+    flex-grow: 1;
+    margin: 0;
+    text-align: center;
+    font-size: 18px;
+}
+
+.logout-button {
+    background-color: #e57373;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Formulários */
+.form-container {
+    margin-top: 80px; /* Espaço para o cabeçalho */
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.action-button {
+    background-color: #27ae60;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.action-button:hover {
+    background-color: #219653;
+}
+
+/* Botão voltar */
+.back-button {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: #c1e9d3;
+    color: #444;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.back-button:hover {
+    background-color: #aff1a9;
+}
