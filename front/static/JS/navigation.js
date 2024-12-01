@@ -27,5 +27,5 @@ function navigateTo(section) {
 // Função para voltar à tela anterior
 function navigateBack() {
   // Redireciona para o menu inicial
-  window.location.href = "../Telas/menu.html"; // Caminho relativo para o menu principal
+  window.location.href = "http://127.0.0.1:5501/MeNota-main/Me%20Nota/Telas/telaPrincipal.html?email=mwaoao%40llkds.com&senha=111111111111"; // Caminho relativo para o menu principal
 }

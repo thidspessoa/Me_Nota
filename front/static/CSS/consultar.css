@@ -1,0 +1,108 @@
+/* Contêiner principal */
+.form-container {
+    width: 90%;
+    max-width: 400px; /* Ajustando largura para consistência */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+/* Cabeçalho */
+.header {
+    background-color: #052C55; /* Tom mais escuro de azul, da sua paleta */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px 8px 0 0;
+}
+
+.header h2 {
+    color: white;
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* Botão de logout */
+.logout-button {
+    background-color: #052C55; /* Verde escuro */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #dddddd; /* Verde mais escuro */
+}
+
+/* Lista de Notas */
+.notes-container {
+    padding: 20px;
+}
+
+/* Estilo da lista de notas */
+.notes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Item da lista de notas */
+.notes-list li {
+    background-color: #f1f1f1; /* Verde claro */
+    border: 1px solid #ffffff; /* Verde mais intenso */
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito de hover nos itens da lista */
+.notes-list li:hover {
+    background-color: #000000; /* Tom mais suave quando passa o mouse */
+}
+
+/* Ajuste para o último item da lista */
+.notes-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsividade para telas menores */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 8px 16px;
+    }
+
+    .header h2 {
+        font-size: 18px;
+    }
+
+    .logout-button {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .notes-container {
+        padding: 15px;
+    }
+
+    .notes-list li {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .notes-list li:hover {
+        background-color: #7197c0; /* Mantém o efeito de hover em telas menores */
+    }
+}

@@ -4,15 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu</title>
-  <link rel="stylesheet" href="../CSS/menu.css">
+  <link rel="stylesheet" href="../CSS/telaPrincipal.css">
 </head>
 <body>
   <div class="menu-container">
     <div class="header">
-      <button onclick="location.href='../index.html'" class="logout-button">Sair</button>
-      <h2>Início</h2>
+      <button onclick="location.href='../Telas/login.html'" class="logout-button">Sair</button>
+      <img src="../icones/login.png" alt="perfil" class="perfil">
+
+      <img src="../Telas/imagens/menu-hambuguer.png" alt="Menu" class="menu">
+
     </div>
-    <p class="menu-text">O que você gostaria de fazer?</p>
+      <!-- Balão de diálogo -->
+  <div class="balloon">O que você gostaria de fazer?</div>
+
+    
     <div class="menu-buttons">
       <button class="menu-button" onclick="location.href='emitir.html'">
         <div class="circle">
@@ -40,6 +46,13 @@
           <img src="../icones/validar.png" alt="Validar Nota">
         </div>
         <span>VALIDAR NOTA</span>
+      </button>
+
+      <button class="menu-button" onclick="location.href='pontuacao.html'">
+        <div class="circle">
+          <img src="../icones/pontuacao.png" alt="Minha Pontuação">
+        </div>
+        <span>MINHA PONTUÇÃO</span>
       </button>
     </div>
   </div>

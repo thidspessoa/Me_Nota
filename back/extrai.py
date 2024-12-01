@@ -4,6 +4,7 @@ import re
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
+import sys
 
 # Carregar variáveis de ambiente do arquivo .env
 load_dotenv()
@@ -147,5 +148,13 @@ def main(image_path):
          print(f"A imagem processada '{processed_image_path}' não foi encontrada para exclusão.")
 
 if __name__ == "__main__":
-    image_path = "imagem_identidade.jpeg"
-    main(image_path)
+    import sys
+    if len(sys.argv) != 2:
+        print("Uso: python extrai.py <caminho_da_imagem>")
+        sys.exit(1)
+    image_path = sys.argv[1]
+    success = main(image_path)
+    if success:
+        print("Processamento concluído com sucesso.")
+    else:
+        print("Falha no processamento.")

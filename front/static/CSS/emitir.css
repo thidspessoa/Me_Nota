@@ -1,5 +1,7 @@
+/* Estilo atualizado para a tela de emissão */
 .form-container {
   width: 90%;
+  max-width: 400px; /* Ajustando largura para consistência */
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -10,48 +12,39 @@
 
 /* Cabeçalho */
 .header {
-  background-color: #6FCF97;
-  color: white;
-  padding: 12px 10px;
+  background-color: #052C55; /* Cor do cabeçalho */
+  padding: 13px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 0 0 10px 10px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  border-radius: 8px 8px 0 0;
 }
 
 .header h2 {
-  margin: 0;
+  color: white;
   font-size: 20px;
+  margin: 0;
   text-align: center;
-  flex: 1; /* Centraliza o texto horizontalmente */
+  flex-grow: 1;
 }
 
-/* Botão de voltar*/
-
-.logout-button {
-  background-color: #10571c;
+/* Botão de Voltar */
+.back-button {
+  background-color: #052C55;
   color: white;
   border: none;
-  padding: 8px 15px;
+  padding: 6px 8px;
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.logout-button:hover {
-  background-color: #0e4818;
+.back-button:hover {
+  background-color: #052C55;
 }
 
-
 /* Formulário */
-
 .form-container form {
   margin-top: 120px; /* Espaço suficiente para o cabeçalho */
   width: 100%;
@@ -63,13 +56,6 @@
   box-sizing: border-box;
 }
 
-.form-container p {
-  margin-bottom: 20px;
-  font-size: 16px;
-  text-align: center;
-  color: #333;
-}
-
 .input-group {
   margin: 15px 0;
   width: 100%;
@@ -77,16 +63,17 @@
 
 .input-group input {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-sizing: border-box;
 }
 
+/* Botão de Ação */
 .action-button {
-  background-color: #27ae60;
-  color: white;
+  background-color: #052C55; /* Cor do botão */
+  color: #ffffff;
   padding: 12px;
   font-size: 16px;
   border: none;
@@ -101,16 +88,24 @@
   background-color: #219653;
 }
 
+/* Melhorias para telas menores */
+@media screen and (max-width: 768px) {
+  .form-container .header {
+    padding: 8px 16px;
+    flex-direction: row;
+  }
 
-/* Div para exibição de resultados */
-.resultado-container {
-  margin-top: 20px;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  width: 100%;
-  max-width: 300px;
-  text-align: center;
-  font-size: 16px;
-  border: 1px solid #ddd;
+  .form-container form {
+    margin-top: 100px;
+    padding: 0 10px;
+  }
+
+  .input-group input {
+    font-size: 14px;
+  }
+
+  .action-button {
+    font-size: 14px;
+    padding: 10px;
+  }
 }

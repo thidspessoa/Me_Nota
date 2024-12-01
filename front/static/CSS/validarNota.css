@@ -1,0 +1,132 @@
+/* Estilo Global */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Contêiner principal */
+.validar-container {
+    width: 100%; /* O contêiner ocupa 100% da largura */
+    max-width: 400px; /* Largura máxima para centralização */
+    height: 100%; /* O contêiner ocupa 100% da altura */
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centraliza a imagem vertical e horizontalmente */
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Cabeçalho */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 400px;
+    background-color: #052C55; /* Cor principal ajustada para a paleta */
+    color: white;
+    padding: 13px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.header h2 {
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+/* Botão de logout */
+.logout-button {
+    background-color: #052C55; /* Verde escuro */
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #052C55; /* Verde mais escuro */
+}
+
+/* Centralização da imagem */
+.icon-section img {
+    width: 120px;
+    height: auto;
+}
+
+/* Texto de carregamento */
+form p {
+    margin: 20px 0 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #333; /* Cor escura para contraste */
+}
+
+/* Input de arquivo */
+input[type="file"] {
+    margin: 10px 0;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    width: 90%;
+    max-width: 360px;
+}
+
+/* Botão de ação */
+.action-button {
+    background-color: #052C55; /* Verde suave */
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 90%;
+    max-width: 360px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #052C55; /* Verde mais escuro */
+}
+
+/* Melhorias para telas menores */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 8px 16px;
+        flex-direction: row;
+    }
+
+    form p {
+        font-size: 14px;
+    }
+
+    input[type="file"] {
+        font-size: 12px;
+    }
+
+    .action-button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

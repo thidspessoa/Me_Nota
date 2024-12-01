@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Pontuação</title>
+  <link rel="stylesheet" href="../CSS/pontuacao.css">
+</head>
+<body>
+  <div class="pontuacao-container">
+    <div class="header">
+      <button onclick="navigateBack()" class="logout-button">Voltar</button>
+      <h2>Minha Pontuação</h2>
+    </div>
+    
+    <div class="content">
+      <div class="pontuacao-section">
+        <h3>Total de Pontos</h3>
+        <div class="pontuacao-total">
+          <span id="pontuacao">1250</span> pontos
+        </div>
+      </div>
+
+      <div class="progresso-section">
+        <h3>Progresso</h3>
+        <div class="barra-progresso">
+          <div class="progresso" style="width: 50%;"></div>
+        </div>
+        <p>Faltam <span id="pontos-faltantes">750</span> pontos para a próxima recompensa!</p>
+      </div>
+
+      <div class="recompensas-section">
+        <h3>Recompensas Disponíveis</h3>
+        <ul class="lista-recompensas">
+          <li>
+            <img src="../icones/cupom.png" alt="Voucher">
+            <span>Desconto no IPTU - 1000 pontos</span>
+          </li>
+          <li class="indisponivel">
+            <img src="../icones/voucher.png" alt="Cupom">
+            <span>Voucher de Compras - 2000 pontos</span>
+          </li>
+          <li class="indisponivel">
+            <img src="../icones/premio.png" alt="Prêmio">
+            <span>Prêmio Especial - 5000 pontos</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="../JS/pontuacao.js"></script>
+</body>
+</html>

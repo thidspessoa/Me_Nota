@@ -1,0 +1,155 @@
+/* Estilos gerais */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background-color: #ffffff; /* Azul escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Contêiner Principal */
+  .pontuacao-container {
+    width: 90%;
+    max-width: 400px; /* Largura máxima ajustada */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    height: 100%;
+    margin-top: 60px; /* Espaço para o cabeçalho fixo */
+  }
+  
+  /* Cabeçalho */
+  .header {
+    background-color: #052C55; /* Azul escuro */
+  color: white;
+  padding: 12px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0 0 10px 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  }
+  
+  .header h2 {
+    margin: 0;
+    font-size: 20px;
+    text-align: center;
+    flex: 1; /* Centraliza o texto horizontalmente */
+  }
+  
+  /* Botão de sair (logout) */
+  .logout-button {
+    background-color: #0096ae; /* Verde */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #0096ae; /* Tom mais escuro de verde */
+  }
+  
+  /* Seção de Pontuação */
+  .pontuacao-section {
+    padding: 20px;
+    margin-top: 80px; /* Espaço suficiente para o cabeçalho */
+  }
+  
+  .pontuacao-total {
+    font-size: 36px;
+    font-weight: bold;
+    color: #0096ae; /* AZUL CLARO */
+    margin-bottom: 10px;
+  }
+  
+  .pontuacao-text {
+    font-size: 16px;
+    color: #333333;
+  }
+  
+  /* Seção de Progresso */
+  .progresso-section {
+    padding: 20px;
+  }
+  
+  .barra-progresso {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+    height: 20px;
+  }
+  
+  .progresso {
+    background-color: #0096ae; /* AZUL CLARO */
+    height: 100%;
+    width: 50%; /* Altere dinamicamente via JS */
+    transition: width 0.5s ease; /* Animação suave */
+  }
+  
+  /* Recompensas */
+  .recompensas-section {
+    padding: 20px;
+  }
+  
+  .lista-recompensas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .lista-recompensas li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .lista-recompensas li img {
+    width: 40px;
+    margin-right: 10px;
+  }
+  
+  .lista-recompensas li.indisponivel {
+    color: #999999;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .pontuacao-container {
+      width: 95%;
+    }
+  
+    .header h2 {
+      font-size: 18px;
+    }
+  
+    .logout-button {
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+  
+    .pontuacao-total {
+      font-size: 30px;
+    }
+  
+    .barra-progresso {
+      height: 15px;
+    }
+  }
+  
