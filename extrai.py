@@ -22,15 +22,14 @@ def display_raw_text(data):
 
 # Função para extrair campos específicos
 def extract_fields(data):
-    fields = {'RG': None, 'NOME': None, 'FILIAÇÃO 1': None, 'FILIAÇÃO 2': None, 'DATA DE EXPEDIÇÃO': None, 'DATA DE NASCIMENTO': None, 'NATURALIDADE': None}
+    fields = {'RG': None, 'NOME': None, 'FILIAÇÃO 1': None, 'FILIAÇÃO 2': None, 'DATA DE EXPEDIÇÃO': None, 'DATA DE NASCIMENTO': None}
     current_field = 'NOME'  # Inicia preenchendo o campo 'NOME'
-    field_order = ['NOME', 'FILIAÇÃO 1', 'FILIAÇÃO 2', 'DATA DE EXPEDIÇÃO', 'DATA DE NASCIMENTO', 'NATURALIDADE']
+    field_order = ['NOME', 'FILIAÇÃO 1', 'FILIAÇÃO 2', 'DATA DE EXPEDIÇÃO', 'DATA DE NASCIMENTO']
     current_index = 0  # Índice do campo atual
     parts = []  # Armazena as partes entre delimitadores
     rg_found = False  # Controle para RG
     data_expedicao_found = False  # Controle para data de expedição
     data_nascimento_found = False  # Controle para data de nascimento
-    naturalidade_parts = []  # Armazena partes da naturalidade
 
     for i in range(len(data['text'])):
         text = data['text'][i]
@@ -56,18 +55,13 @@ def extract_fields(data):
             data_nascimento_found = True
             continue
 
-        # Detectar naturalidade com formato de nome com hífen
-        if not fields['NATURALIDADE'] and re.match(r'\w+-\w+', text):
-            fields['NATURALIDADE'] = text
-            continue
-
         # Detectar início de um bloco
-        if text in ["<<", "<<+"]:
+        if text in ["<<", "<<+","<"]:
             parts = []  # Reinicia as partes para o novo bloco
             continue
 
         # Detectar fim de um bloco
-        if text in [">>", "+>",">"]:
+        if text in [">>", "+>"]:
             if parts:  # Verifica se há algo válido no bloco
                 joined_text = " ".join(parts).strip()  # Junta as partes
                 fields[field_order[current_index]] = joined_text  # Salva no campo atual
@@ -97,34 +91,41 @@ def insert_into_mongo(data):
 def main(image_path):
     image = cv2.imread(image_path)
 
-    # Controle de brilho e contraste
-    alpha = 1.55  # Fator de ganho (aumenta ou diminui o contraste)
-    beta = 45  # Fator de brilho (aumenta ou diminui o brilho)
+    # Ajustar contraste e brilho
+    alpha = 2.0 # Contraste
+    beta = 25  # Brilho
+    adjusted_image = cv2.convertScaleAbs(image, alpha=alpha, beta=beta)
 
-    # Aumenta o contraste e brilho
-    processed_image = cv2.convertScaleAbs(image, alpha=alpha, beta=beta)
+    # Converter para escala de cinza
+    gray_image = cv2.cvtColor(adjusted_image, cv2.COLOR_BGR2GRAY)
 
-    # Converte a imagem para escala de cinza
-    gray_image = cv2.cvtColor(processed_image, cv2.COLOR_BGR2GRAY)
+    # Aplicar remoção de ruído
+    denoised_image = cv2.fastNlMeansDenoising(gray_image, None, 30, 7, 21)
 
-    # Binariza a imagem com Otsu
-    processed_image = cv2.threshold(gray_image, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
+    # Aplicar binarização adaptativa para melhorar o contraste local
+    binary_image = cv2.adaptiveThreshold(
+        denoised_image, 
+        255, 
+        cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
+        cv2.THRESH_BINARY, 
+        11, 
+        2
+    )
 
-    # Realiza OCR na imagem
+    # Salvar e exibir a imagem processada
+    cv2.imwrite("processed_image_for_ocr.jpg", binary_image)
+
+    # Realizar OCR na imagem processada
     custom_config = r'--oem 3 --psm 6'
-    data = pytesseract.image_to_data(processed_image, lang='por', config=custom_config, output_type=pytesseract.Output.DICT)
+    data = pytesseract.image_to_data(binary_image, lang='por', config=custom_config, output_type=pytesseract.Output.DICT)
 
-    # Salva a imagem processada para verificação (opcional)
-    processed_image_path = "processed_image_for_ocr.jpg"
-    cv2.imwrite(processed_image_path, processed_image)
-
-    # Exibe o texto bruto extraído
+    # Exibir texto bruto extraído
     display_raw_text(data)
 
-    # Extrai os campos relevantes
+    # Extrair campos relevantes
     extracted_fields = extract_fields(data)
 
-    # Exibe os campos extraídos
+    # Exibir campos extraídos
     print("\nCampos extraídos:")
     for key, value in extracted_fields.items():
         print(f"{key}: {value}")
@@ -133,17 +134,17 @@ def main(image_path):
     if all(extracted_fields.values()):
         print("Dados prontos para inserção no MongoDB:")
         print(extracted_fields)
-        insert_into_mongo(extracted_fields) 
+        insert_into_mongo(extracted_fields)
     else:
         print("Nenhum dado relevante extraído para inserir no MongoDB.")
 
     # Excluir a imagem processada
-    if os.path.exists(processed_image_path):
-        os.remove(processed_image_path)
-        print(f"A imagem processada '{processed_image_path}' foi excluída.")
-    else:
-        print(f"A imagem processada '{processed_image_path}' não foi encontrada para exclusão.")
+    # if os.path.exists(processed_image_path):
+    #     os.remove(processed_image_path)
+    #     print(f"A imagem processada '{processed_image_path}' foi excluída.")
+    # else:
+    #     print(f"A imagem processada '{processed_image_path}' não foi encontrada para exclusão.")
 
 if __name__ == "__main__":
-    image_path = "imagem_identidade.jpeg" 
+    image_path = "imagem_identidade.jpeg"
     main(image_path)
