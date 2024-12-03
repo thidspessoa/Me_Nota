@@ -19,8 +19,8 @@ function navigateTo(section) {
       location.href = 'Telas/consultar.html'; // Redireciona para a página de consultar
   } else if (section === 'validar') {
       location.href = 'Telas/validar.html'; // Redireciona para a nova página de validar
-  } else if (section === 'menu') {
-      location.href = 'Telas/menu.html'; // Redireciona para o menu principal
+  } else if (section === 'Telas/telaPrincipal.html') {
+      location.href = 'Telas/telaPrincipal.html'; // Redireciona para o menu principal
   }
 }
 

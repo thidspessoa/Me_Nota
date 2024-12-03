@@ -31,6 +31,6 @@ const notasFiscais = [
   
   // Função para o botão "Voltar"
   function voltar() {
-    window.location.href = 'menu.html'; // Substitua por window.history.back() para voltar ao histórico
+    window.location.href = '../Telas/telaPrincipal.html'; // Substitua por window.history.back() para voltar ao histórico
   }
   

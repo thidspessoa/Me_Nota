@@ -20,7 +20,7 @@ const notasFiscais = [
   
   // Função para o botão "Voltar"
   function voltar() {
-    window.location.href = 'menu.html';
+    window.location.href = '../Telas/telaPrincipal.html';
   }
   
   // Chama a função para carregar as notas ao abrir a página

@@ -1,6 +1,6 @@
 // Função para voltar ao menu principal
-function navigateBack() {
-    window.location.href = "../Telas/menu.html"; // Caminho relativo para o menu principal
+function voltar() {
+    window.location.href = "../Telas/telaPrincipal.html"; // Caminho relativo para o menu principal
 }
 
 // Função para validar o arquivo

@@ -29,7 +29,7 @@ formLogin.addEventListener('submit', (event) => {
       if (data.tipo === 'admin') {
         window.location.href = 'admin.html';
       } else {
-        window.location.href = 'menu.html';
+        window.location.href = 'telaPrincipal.html';
       }
     } else {
       alert('E-mail ou senha incorretos.');
