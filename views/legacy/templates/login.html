@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/login.css') }}">
+  <script src="{{ url_for('static', filename='login.js') }}" defer></script>
+  <img src="{{ url_for('static', filename='imagens/logo.jpeg') }}" alt="Me Nota" class="logo">
+</head>
+<body>
+  <div class="container">
+    <img src="{{ url_for('static', filename='imagens/logo.jpeg') }}" alt="Me Nota" class="logo">
+
+    <h2>Bem-vindo ao Me Nota</h2>
+    <p class="welcome-message">Entre na sua conta ou cadastre-se para começar a usar nossos serviços.</p>
+
+    <form method="POST" action="{{ url_for('login') }}">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+      <button type="submit" class="btn-submit">Entrar</button>
+    </form>
+
+    {% if message %}
+    <div class="error-message" role="alert">
+      {{ message }}
+    </div>
+    {% endif %}
+
+    <div class="divider">ou</div>
+
+    <div class="social-login">
+      <button class="btn-google">
+        <img src="{{ url_for('static', filename='imagens/google-icon.png') }}" alt="Google Logo" class="google-icon">
+        Entrar com Google
+      </button>
+    </div>
+
+    <div class="register">
+      <p>Não tem uma conta? <a href="{{ url_for('cadastro') }}">Cadastre-se</a></p>
+    </div>
+  </div>
+</body>
+</html>
